@@ -1,0 +1,14 @@
+matplotlib
+point_cloud_utils
+kornia
+opencv-python
+pyhocon
+trimesh
+scipy
+cython
+colour
+pymcubes
+tensorboardX
+torch==1.11.0
+torchaudio
+torchvision
