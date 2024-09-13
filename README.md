@@ -113,13 +113,13 @@ The `mode` argument provides different training manners. You can set different t
 To extract the surfaces from trained model, use the following script:
 ```shell
 # DTU scan24
-python exp_runner.py --conf confs/dtu/womask.conf --mode train_udf_color_wodepth_validate_mesh --case_name dtu_scan24 --is_continue 
+python exp_runner.py --conf confs/dtu/womask.conf --mode train_udf_color_wodepth_validate_mesh --case dtu_scan24 --is_continue 
 
 # Deepfashion 30
-python exp_runner.py --conf confs/deepfashion3d/deepfashion3d.conf --mode train_udf_color_wodepth_validate_mesh --case_name 30 --is_continue
+python exp_runner.py --conf confs/deepfashion3d/deepfashion3d.conf --mode train_udf_color_wodepth_validate_mesh --case 30 --is_continue
 
 # Replica room0
-python exp_runner.py --conf confs/replica/room0.conf --mode train_udf_color_wodepth_validate_mesh --is_continue
+python exp_runner.py --conf confs/replica/replica.conf --mode train_udf_color_wodepth_validate_mesh --case room0 --is_continue
 
 # real-captured fan
 python exp_runner.py --conf confs/real_captured/real_captured.conf --mode train_udf_color_wodepth_validate_mesh --case_name fan --is_continue
@@ -145,7 +145,7 @@ python eval_replica.py --gt_dir ../data/Replica/gt_meshes/ --data_dir ../data/Re
 
 
 # Pretrained Meshes
-We provide the pretrained meshes of all the three datasets. If you are willing to use these meshes, please download them from [here](https://drive.google.com/drive/folders/1oJ5qMVkb-CdVbGLNmP5f7LZRfop8lrpv?usp=sharing).
+We provide the pretrained meshes of all the four datasets. If you are willing to use these meshes, please download them from [here](https://drive.google.com/drive/folders/1oJ5qMVkb-CdVbGLNmP5f7LZRfop8lrpv?usp=sharing).
 
 # Citation
 If you find our code or paper useful, please consider citing
