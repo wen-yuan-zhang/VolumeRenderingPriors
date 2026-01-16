@@ -88,29 +88,33 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Learning Unsigned Distance Functions from Multi-view Images with Volume Rendering Priors</h1>
+          <h1 class="title is-1 publication-title">VRP-UDF: Towards Unbiased Learning of Unsigned Distance Functions from Multi-view Images with Volume Rendering Priors</h1>
           <div class="column is-full_width">
-            <h2 class="title is-4">ECCV 2024</h2>
+            <h2 class="title is-4">TPAMI 2026 / ECCV 2024</h2>
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://wen-yuan-zhang.github.io/">Wenyuan Zhang</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              Kanle Shi<sup>2</sup>,
+              <a href="">Chunsheng Wang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Kanle Shi</a><sup>3</sup>,
             </span>
             <span class="author-block">
               <a href="https://yushen-liu.github.io/">Yu-Shen Liu</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://h312h.github.io/">Zhizhong Han</a><sup>3</sup>
+              <a href="https://h312h.github.io/">Zhizhong Han</a><sup>4</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>School of Software, Tsinghua University,</span>
-            <span class="author-block"><sup>2</sup>Kuaishou Technology</span>
-            <span class="author-block"><sup>3</sup>Wayne State University</span>
+            <span class="author-block"><sup>2</sup>China Telecom Wanwei Information Technology Co., Ltd.,</span>
+            <span class="author-block"><sup>3</sup>Kuaishou Technology,</span>
+            <span class="author-block"><sup>4</sup>Wayne State University</span>
           </div>
 
           <div class="column has-text-centered">
@@ -158,9 +162,31 @@
 
       </div>
     </div>
-    <!--/ Animation. -->
-
   </div>
+
+  <div class="container is-max-desktop">
+
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" style="margin-top: -20px"></h2>
+
+        <video id="replay-video"
+           autoplay
+           controls
+           muted
+           preload
+           playsinline
+           loop
+           width="100%">
+          <source src="./resources/video_pami.mp4"
+              type="video/mp4">
+        </video>
+
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <section class="section">
@@ -171,7 +197,7 @@
         <h2 class="title is-3" style="margin-top: -30px">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Unsigned distance functions (UDFs) have been a vital representation for open surfaces. With different differentiable renderers, current methods are able to train neural networks to infer a UDF by minimizing the rendering errors on the UDF to the multi-view ground truth. However, these differentiable renderers are mainly handcrafted, which makes them either biased on ray-surface intersections, or sensitive to unsigned distance outliers, or not scalable to large scale scenes. To resolve these issues, we present a novel differentiable renderer to infer UDFs more accurately. Instead of using handcrafted equations, our differentiable renderer is a neural network which is pre-trained in a data-driven manner. It learns how to render unsigned distances into depth images, leading to a prior knowledge, dubbed volume rendering priors. To infer a UDF for an unseen scene from multiple RGB images, we generalize the learned volume rendering priors to map inferred unsigned distances in alpha blending for RGB image rendering. Our results show that the learned volume rendering priors are unbiased, robust, scalable, 3D aware, and more importantly, easy to learn. We evaluate our method on both widely used benchmarks and real scenes, and report superior performance over the state-of-the-art methods.
+            Unsigned distance functions (UDFs) have been a vital representation for open surfaces. With different differentiable renderers, current methods are able to train neural networks to infer a UDF by minimizing the rendering errors with the UDF to the multi-view ground truth. However, these differentiable renderers are mainly handcrafted, which makes them either biased on ray-surface intersections, or sensitive to unsigned distance outliers, or not scalable to large scenes. To resolve these issues, we present a novel differentiable renderer to infer UDFs more accurately. Instead of using handcrafted equations, our differentiable renderer is a neural network which is pre-trained in a data-driven manner. It learns how to render unsigned distances into depth images, leading to a prior knowledge, dubbed volume rendering priors. To infer a UDF for an unseen scene from multiple RGB images, we generalize the learned volume rendering priors to map inferred unsigned distances in alpha blending for RGB image rendering. To reduce the bias of sampling in UDF inference, we utilize an auxiliary point sampling prior as an indicator of ray-surface intersection, and propose novel schemes towards more accurate and uniform sampling near the zero-level sets. We also propose a new strategy  that leverages our pretrained volume rendering prior to serve as a general surface refiner, which can be integrated with various Gaussian reconstruction methods to optimize the Gaussian distributions and refine geometric details. Our results show that the learned volume rendering prior is unbiased, robust, scalable, 3D aware, and more importantly, easy to learn. Further experiments show that the volume rendering prior is also a general strategy to enhance other neural implicit representations such as signed distance function and occupancy. We evaluate our method on both widely used benchmarks and real scenes, and report superior performance over the state-of-the-art methods. 
           </p>
         </div>
       </div>
@@ -198,6 +224,7 @@
             Our prior can be learned in a data-driven manner, which provides a novel perspective to recover geometry with prior knowledge through volume rendering.
             (2) propose a novel deep neural network and learning scheme, 
             and report extensive analysis to learn an unbiased differentiable renderer for UDFs with robustness, scalability, and 3D awareness.
+            (3) extend the learned VRP to various neural representations and Gaussian Splatting-based surface reconstruction to validate its generalization ability for downstream applications.
           </p>
           <p style="margin-top: 30px">
             Here is an overview of our method. 
@@ -227,8 +254,7 @@
         <div class="content has-text-justified">
           <img src="./resources/deepfashion3d.png" class="center">
           <p>
-            Visual comparisons on open surface reconstructions with error maps on DeepFashion3D dataset. Note that NeAT uses additional mask supervision. 
-            The transition from blue to yellow indicates small to large reconstruction errors.
+            Visual comparisons on open surface reconstructions with error maps on DeepFashion3D dataset. The transition from blue to yellow indicates small to large reconstruction errors.
           </p>
         </div>
 
@@ -242,13 +268,15 @@
           <img src="./resources/replica.png" class="center">
         </div>
 
+        <h3 class="title is-4">Comparison on Insects Dataset</h3>
+        <div class="content has-text-justified">
+          <img src="./resources/insects.png" class="center">
+        </div>
+
         <h3 class="title is-4">Comparison on Real-Captured Datasets</h3>
         <div class="content has-text-justified">
           <img src="./resources/real-captured.png" class="center">
-          <p>
-            Comparison on Real-Captured Datasets. (a) is the visualization of our real-captured scenes. The first one is a paper-folding greeting card, and the second one is a plant.
-            (b) is the visualization of the real scans used in NeUDF. The right-top and right-bottom part of each image are enlarged details and rendering views, respectively. 
-          </p>
+          <img src="./resources/real-captured2.png" class="center">
         </div>
           
         
@@ -273,19 +301,7 @@
           </video>
         </div>
 
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 autoplay
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 loop
-                 width="100%">
-            <source src="./resources/video_pami.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
+        
         
 
       </div>
@@ -300,6 +316,14 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
+    <pre><code>@article{zhang2026vrpudf,
+      title={{VRP-UDF}: Towards Unbiased Learning of Unsigned Distance Functions from Multi-view Images with Volume Rendering Priors},
+      author={Zhang, Wenyuan and Wang, Chunsheng and Shi, Kanle and Liu, Yu-Shen and Han, Zhizhong},
+      journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+      year={2026},
+      publisher={IEEE}
+    }
+</code></pre>
      <pre><code>@inproceedings{zhang2024learning,
       title={Learning unsigned distance functions from multi-view images with volume rendering priors},
       author={Zhang, Wenyuan and Shi, Kanle and Liu, Yu-Shen and Han, Zhizhong},
