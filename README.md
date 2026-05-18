@@ -10,7 +10,7 @@
     ·
     <a href="https://h312h.github.io/"><strong>Zhizhong Han</strong></a>
 </p>
-<h2 align="center">ECCV 2024</h2>
+<h2 align="center">ECCV 2024 / TPAMI 2026</h2>
 <h3 align="center"><a href="https://arxiv.org/abs/2407.16396">Paper</a> | <a href="https://wen-yuan-zhang.github.io/VolumeRenderingPriors/">Project Page</a></h3>
 <div align="center"></div>
 <p align="center">
@@ -156,6 +156,14 @@ If you find our code or paper useful, please consider citing
       journal={European Conference on Computer Vision},
       year={2024},
       organization={Springer}
+    }
+    
+@article{zhang2026vrpudf,
+      title={{VRP-UDF}: Towards Unbiased Learning of Unsigned Distance Functions from Multi-view Images with Volume Rendering Priors},
+      author={Zhang, Wenyuan and Wang, Chunsheng and Shi, Kanle and Liu, Yu-Shen and Han, Zhizhong},
+      journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+      year={2026},
+      publisher={IEEE}
     }
 ```
 
